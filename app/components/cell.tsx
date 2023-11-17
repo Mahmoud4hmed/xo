@@ -6,10 +6,14 @@ type CellProps = {
     cells: string[]
     setCells: React.Dispatch<React.SetStateAction<string[]>>
     cell: string
+    winningMessage: string
 }
 
-const Cell = ({go, setGo, id, cells, setCells, cell}: CellProps) => {
+const Cell = ({go, setGo, id, cells, setCells, cell, winningMessage}: CellProps) => {
     const handleClick = (e) => {
+        if (winningMessage){
+            return;
+        }
         const notTaken = !cells[id]
         if(notTaken){    
             if(go === "circle") {
